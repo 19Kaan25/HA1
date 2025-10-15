@@ -93,7 +93,7 @@ class CalculatorTest {
     
     @Test
     @DisplayName("should display result after divide two positive multi-digit numbers")
-    void testMultipleOperationKeys() {
+    void testPositiveDivision() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
@@ -108,20 +108,63 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    /* 
+
     @Test
-    @DisplayName("should display error when ")
-    void testSquareRootOfNegative() {
+    @DisplayName("should calcuate integer square root")
+    void testMultipleOperationKeys() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(7);
-        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
         calc.pressUnaryOperationKey("√");
 
-        String expected = "Error";
+        String expected = "5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-    }*/
+    }
+
+    @Test
+    @DisplayName("should display result after dividing a large number")
+    void testDivideLargeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "499999999.5";
+        //String expected = "4.99999999";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after adding two large positive numbers")
+    void testPositiveMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "40";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
