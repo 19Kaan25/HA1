@@ -90,5 +90,38 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
+    
+    @Test
+    @DisplayName("should display result after divide two positive multi-digit numbers")
+    void testMultipleOperationKeys() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    /* 
+    @Test
+    @DisplayName("should display error when ")
+    void testSquareRootOfNegative() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }*/
 }
 
