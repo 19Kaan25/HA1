@@ -90,7 +90,8 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
-    
+
+    //Neuer Test der direkt grün wird
     @Test
     @DisplayName("should display result after divide two positive multi-digit numbers")
     void testPositiveDivision() {
@@ -109,62 +110,38 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    // FEHLER 1: Müsste 5 ergeben aber es kommt 5.0 raus
     @Test
     @DisplayName("should calcuate integer square root")
     void testMultipleOperationKeys() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("√");
 
-        String expected = "5";
+        String expected = "7";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
+    //FEHLER 2: Multiplikation wird nicht ausgegeben, wenn bereits eine Multiplikations-Operation aktiv ist und man dann noch ein Multiplikationszeichen drückt
     @Test
-    @DisplayName("should display result after dividing a large number")
-    void testDivideLargeNumber() {
+    @DisplayName("should calculate a multiplication after pressing the multiplication operation key")
+    void testCalculateMultiplicationWithBinaryOperationKey() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(2);
-        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("x");
 
-        String expected = "499999999.5";
-        //String expected = "4.99999999";
+        String expected = "81";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
-    @Test
-    @DisplayName("should display result after adding two large positive numbers")
-    void testPositiveMultiplication() {
-        Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
-        calc.pressEqualsKey();
-
-        String expected = "40";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
 }
-

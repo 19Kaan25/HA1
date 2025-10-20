@@ -82,6 +82,8 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.equals("NaN")) screen = "Error";
+        //FEHLER 1 FIX: Wenn screen mit .0 endet, dann entferne die letzten beiden Zeichen von screen
+        if(screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }
