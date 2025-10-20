@@ -59,8 +59,13 @@ public class Calculator {
      * auf dem Bildschirm angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
-    public void pressBinaryOperationKey(String operation)  {
-        latestValue = Double.parseDouble(screen);
+    public void pressBinaryOperationKey(String operation) {
+        //FEHLER 2 FIX:
+        if(!latestOperation.isEmpty()) {
+            pressEqualsKey();
+        } else {
+            latestValue = Double.parseDouble(screen);
+        }
         latestOperation = operation;
     }
 
@@ -68,7 +73,7 @@ public class Calculator {
      * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
      * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
-     * der Bildschirminhalt mit dem Ergebnis aktualisiert.
+     * der Bildschirminhalt mit dem Ergebnis aktualisiert. Sollte das Ergebnis auf .0 enden dann, wird .0 entfernt.
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
