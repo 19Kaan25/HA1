@@ -110,7 +110,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    // FEHLER 1: Müsste 5 ergeben aber es kommt 5.0 raus
+    // FEHLER 1: Müsste 7 ergeben aber es kommt 7.0 raus
     @Test
     @DisplayName("should calcuate integer square root")
     void testMultipleOperationKeys() {
