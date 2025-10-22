@@ -63,9 +63,9 @@ public class Calculator {
         //FEHLER 2 FIX:
         if(!latestOperation.isEmpty()) {
             pressEqualsKey();
-        } else {
-            latestValue = Double.parseDouble(screen);
         }
+        latestValue = Double.parseDouble(screen);
+
         latestOperation = operation;
     }
 
